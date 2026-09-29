@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fierza Luthfi Avjadistia | S.E.E.S. Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+        :root {
+            --p3r-dark-blue: #021a3a;
+            --p3r-bright-blue: #0077ff;
+            --p3r-cyan: #00e5ff;
+            --p3r-white: #f4f6f9;
+            --p3r-black: #0b0c10;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top right, var(--p3r-bright-blue), var(--p3r-dark-blue) 70%, var(--p3r-black));
+            color: var(--p3r-white);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Diagonal water/wave background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(0, 229, 255, 0.05) 45%, transparent 50%);
+            background-size: 20px 20px;
+            z-index: -1;
+            animation: waterFlow 20s linear infinite;
+        }
+
+        @keyframes waterFlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        header {
+            padding: 40px 20px;
+            text-align: left;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            background: var(--p3r-black);
+            border-bottom: 4px solid var(--p3r-cyan);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            color: var(--p3r-cyan);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px var(--p3r-bright-blue);
+            transform: skewX(-10deg);
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            color: var(--p3r-white);
+            font-style: italic;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--p3r-white);
+            border-left: 8px solid var(--p3r-bright-blue);
+            padding-left: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 150%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--p3r-bright-blue), transparent);
+        }
+
+        .card {
+            background: rgba(11, 12, 16, 0.85);
+            border: 1px solid var(--p3r-bright-blue);
+            padding: 25px;
+            margin-bottom: 25px;
+            position: relative;
+            box-shadow: 5px 5px 0px rgba(0, 119, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 8px 8px 0px var(--p3r-cyan);
+            border-color: var(--p3r-cyan);
+        }
+
+        /* Glitch effect on hover for cards */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--p3r-cyan);
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            color: var(--p3r-cyan);
+            margin-bottom: 5px;
+        }
+
+        .company-date {
+            font-size: 0.9rem;
+            color: #a0c4ff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        ul {
+            line-height: 1.6;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, var(--p3r-bright-blue), var(--p3r-dark-blue));
+            padding: 10px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border-right: 3px solid var(--p3r-cyan);
+            border-bottom: 3px solid var(--p3r-cyan);
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            transition: 0.3s;
+        }
+
+        .skill-badge:hover {
+            background: var(--p3r-cyan);
+            color: var(--p3r-black);
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: var(--p3r-black);
+            border-top: 2px solid var(--p3r-bright-blue);
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Fierza Luthfi Avjadistia</h1>
+            <p>Multimedia Graduate | Material Planner | Operations Coordinator</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- EXPERIENCE SECTION -->
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="card">
+            <h3 class="job-title">Material Planner (Non-Aircraft Dept)</h3>
+            <div class="company-date">PT Dirgantara Indonesia | April 2026 - Present</div>
+            <ul>
+                <li>Mengelola perencanaan material inventaris dan operasional divisi non-aircraft.</li>
+                <li>Menganalisis data kebutuhan material menggunakan Microsoft Excel (Pivot Tables, Reorder Point formulas).</li>
+                <li>Mengoperasikan modul SAP Material Management untuk efisiensi logistik dan pelacakan barang.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3 class="job-title">Person In Charge (PIC) & Foundation Representative</h3>
+            <div class="company-date">Program Makan Bergizi Gratis (Dapur MBG) | Des 2025 - Mar 2026</div>
+            <ul>
+                <li>Bertanggung jawab penuh atas operasional dapur dan kelancaran distribusi program MBG di Sindangsari 3 Leuwigoong.</li>
+                <li>Mengelola pelaporan mingguan kegiatan dan berkoordinasi langsung dengan pihak yayasan.</li>
+                <li>Memastikan standar sanitasi dan penanganan makanan (food handling) diterapkan dengan baik.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION SECTION -->
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+            <h3 class="job-title">Degree in Multimedia</h3>
+            <div class="company-date">Telkom University</div>
+            <p>Fokus pada modifikasi digital, operasional teknologi, dan analisis data visual.</p>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <h2 class="section-title">Combat... er, Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-badge">SAP Material Management</div>
+            <div class="skill-badge">Microsoft Excel (Adv)</div>
+            <div class="skill-badge">Digital Image Modification</div>
+            <div class="skill-badge">Inventory Logic</div>
+            <div class="skill-badge">IT & Hardware Troubleshooting</div>
+            <div class="skill-badge">Operations Coordination</div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>SEAL THE DEAL. &copy; 2026 FIERZA LUTHFI AVJADISTIA</p>
+    </footer>
+
+</body>
+</html>
