@@ -1,0 +1,1505 @@
+/* ==========================================================================
+   PERSONA 3 RELOAD x SOUL HACKERS 2 - BLACK & WHITE PORTFOLIO STYLESHEET
+   Operator: FIERZA LUTHFI AVJADISTIA
+   Theme: High-Contrast Monochrome Cyber-Noir (Atlus Tactical UI System)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=JetBrains+Mono:ital,wght@0,400;0,600;0,800;1,400&family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+  /* Strict Black & White Palette with Layered Depth */
+  --void-black: #060709;
+  --pitch-black: #0b0c10;
+  --dark-panel: #121318;
+  --sub-panel: #1a1c23;
+  --border-dim: #2e313b;
+  --border-mid: #505464;
+  --border-bright: #9fa4b5;
+  --pure-white: #ffffff;
+  --off-white: #f0f2f7;
+  --silver-accent: #d2d5e0;
+  --text-muted: #8e93a4;
+  --text-sub: #c5c8d4;
+
+  /* Tactical Geometry & Angles */
+  --p3r-skew: -9deg;
+  --p3r-skew-rev: 9deg;
+  --p3r-clip-corner: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  --sh2-hex-clip: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  --tag-clip: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  --angled-cut: polygon(0 0, 100% 0, calc(100% - 24px) 100%, 0 100%);
+
+  /* Transitions */
+  --ease-tactical: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0, 0.9, 0.1, 1);
+}
+
+/* Base Reset & Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--void-black);
+  color: var(--pure-white);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  background-color: var(--void-black);
+  color: var(--off-white);
+  min-height: 100vh;
+  padding-top: 48px;
+  overflow-x: hidden;
+}
+
+section[id], header[id] {
+  scroll-margin-top: 60px;
+}
+
+/* Atlus Halftone Dot Pattern & Noise Overlays */
+.bg-halftone-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-cyber-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Soul Hackers 2 Hexagonal Matrix Grid */
+.bg-hex-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px) 0 0 / 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle CRT Scanline (Toggleable) */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.35;
+}
+
+/* Typography Presets */
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.font-tech {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-cyber {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void-black);
+  border-left: 1px solid var(--border-dim);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pure-white);
+  border: 1px solid var(--void-black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--silver-accent);
+}
+
+/* Selection Styling */
+::selection {
+  background: var(--pure-white);
+  color: var(--void-black);
+}
+
+/* Top System Status HUD Bar */
+.system-hud-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: rgba(6, 7, 9, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--pure-white);
+  z-index: 1000;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hud-tag {
+  background: var(--pure-white);
+  color: var(--void-black);
+  font-weight: 800;
+  padding: 2px 8px;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--void-black);
+  border-radius: 50%;
+  animation: pulse-dot 1.2s infinite alternate;
+}
+
+@keyframes pulse-dot {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.hud-telemetry {
+  color: var(--text-sub);
+  display: none;
+}
+@media (min-width: 768px) {
+  .hud-telemetry { display: inline-block; }
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hud-time-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pure-white);
+  font-weight: 700;
+}
+
+.dark-hour-indicator {
+  padding: 2px 6px;
+  border: 1px solid var(--border-bright);
+  font-size: 0.7rem;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.moon-phase-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px #fff;
+}
+
+.audio-btn, .theme-btn {
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  color: var(--pure-white);
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.audio-btn:hover, .theme-btn:hover {
+  background: var(--pure-white);
+  color: var(--void-black);
+}
+
+/* ==========================================================================
+   TACTICAL NAVIGATION - PERSONA 3 RELOAD COMMAND WHEEL / SH2 COMP DOCK
+   ========================================================================== */
+.tactical-nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(11, 12, 16, 0.95);
+  border: 2px solid var(--pure-white);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.15);
+  z-index: 95;
+  padding: 4px 8px;
+  display: flex;
+  gap: 4px;
+  max-width: 95vw;
+  overflow-x: auto;
+  border-radius: 2px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transition: all 0.2s var(--ease-tactical);
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.nav-item .nav-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--border-bright);
+}
+
+.nav-item:hover {
+  color: var(--pure-white);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-mid);
+  transform: translateY(-2px);
+}
+
+.nav-item.active {
+  background: var(--pure-white);
+  color: var(--void-black);
+  border-color: var(--pure-white);
+  font-weight: 700;
+  transform: translateY(-3px) skewX(-4deg);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.nav-item.active .nav-num {
+  color: var(--void-black);
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   HERO / SUMMONER DOSSIER SECTION
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  padding: 30px 24px 140px;
+  max-width: 1300px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1.18fr 0.82fr;
+  }
+}
+
+/* Angled Atlus Banner */
+.tactical-alert-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--pure-white);
+  color: var(--void-black);
+  padding: 6px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  transform: skewX(var(--p3r-skew));
+  box-shadow: 4px 4px 0 var(--border-mid);
+}
+
+.tactical-alert-ribbon span {
+  transform: skewX(var(--p3r-skew-rev));
+}
+
+.hero-name-block {
+  margin-bottom: 20px;
+}
+
+.hero-kanji-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.hero-main-title {
+  font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+  color: var(--pure-white);
+  line-height: 1.05;
+  text-transform: uppercase;
+  position: relative;
+  transform: skewX(-4deg);
+  letter-spacing: 2px;
+  text-shadow: 
+    3px 3px 0 var(--border-dim),
+    6px 6px 0 rgba(0, 0, 0, 0.9);
+  padding-top: 4px;
+}
+
+.hero-main-title .first-name {
+  display: block;
+  font-weight: 800;
+}
+
+.hero-main-title .last-name {
+  display: block;
+  color: #fff;
+  -webkit-text-stroke: 1.5px #fff;
+  text-stroke: 1.5px #fff;
+  opacity: 0.95;
+}
+
+.hero-title-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tactical-badge {
+  background: var(--dark-panel);
+  border: 1px solid var(--border-bright);
+  color: var(--pure-white);
+  padding: 5px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  clip-path: var(--tag-clip);
+  transition: all 0.2s;
+}
+
+.tactical-badge:hover {
+  background: var(--pure-white);
+  color: var(--void-black);
+  border-color: var(--pure-white);
+}
+
+.hero-summary-box {
+  background: rgba(18, 19, 24, 0.9);
+  border: 1px solid var(--border-mid);
+  border-left: 6px solid var(--pure-white);
+  padding: 20px 24px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.6);
+}
+
+.summary-badge-header {
+  margin-bottom: 12px;
+}
+
+.summary-badge-text {
+  display: inline-block;
+  background: var(--pure-white);
+  color: var(--void-black);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 10px;
+  letter-spacing: 1.5px;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
+}
+
+.hero-summary-text {
+  font-size: 1.05rem;
+  color: var(--off-white);
+  line-height: 1.7;
+}
+
+.hero-summary-text strong {
+  color: var(--pure-white);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 1px 4px;
+}
+
+/* Quick Telemetry Bar */
+.telemetry-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.telemetry-item {
+  background: var(--dark-panel);
+  border: 1px solid var(--border-dim);
+  padding: 12px 14px;
+  border-top: 3px solid var(--border-bright);
+  transition: all 0.2s;
+}
+
+.telemetry-item:hover {
+  border-top-color: var(--pure-white);
+  transform: translateY(-2px);
+  background: var(--sub-panel);
+}
+
+.telemetry-item .t-val {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--pure-white);
+  line-height: 1;
+}
+
+.telemetry-item .t-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Hero Action Buttons */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn-tactical {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-tactical);
+  position: relative;
+  transform: skewX(var(--p3r-skew));
+  border: none;
+}
+
+.btn-tactical span {
+  transform: skewX(var(--p3r-skew-rev));
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-tactical-primary {
+  background: var(--pure-white);
+  color: var(--void-black);
+  box-shadow: 5px 5px 0 var(--border-mid);
+}
+
+.btn-tactical-primary:hover {
+  background: var(--off-white);
+  box-shadow: 8px 8px 0 var(--pure-white);
+  transform: skewX(var(--p3r-skew)) translate(-2px, -2px);
+}
+
+.btn-tactical-outline {
+  background: transparent;
+  color: var(--pure-white);
+  border: 2px solid var(--pure-white);
+  box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-tactical-outline:hover {
+  background: var(--pure-white);
+  color: var(--void-black);
+  box-shadow: 6px 6px 0 var(--border-bright);
+}
+
+/* ==========================================================================
+   AVATAR / SOUL HACKERS 2 COMP DISPLAY
+   ========================================================================== */
+.hero-portrait-frame {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comp-dossier-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: var(--pitch-black);
+  border: 2px solid var(--pure-white);
+  padding: 20px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.1);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+/* Soul Hackers 2 Top Telemetry Header */
+.comp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--pure-white);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+}
+
+.comp-id-stamp {
+  font-weight: 800;
+  color: var(--pure-white);
+}
+
+.comp-sync-rate {
+  background: var(--pure-white);
+  color: var(--void-black);
+  padding: 1px 6px;
+  font-weight: 800;
+}
+
+/* Portrait Image Container */
+.portrait-window {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #000;
+  border: 1px solid var(--border-bright);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.portrait-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(125%) brightness(95%);
+  transition: all 0.4s ease;
+}
+
+.comp-dossier-card:hover .portrait-window img {
+  filter: grayscale(100%) contrast(140%) brightness(105%);
+  transform: scale(1.03);
+}
+
+/* Reticle & Cybernetic Overlays */
+.portrait-hud-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.6) 90%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.05) 3px);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.hud-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--pure-white);
+}
+.corner-tl { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.corner-tr { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+.corner-br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+.hud-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+.hud-crosshair::before, .hud-crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+}
+.hud-crosshair::before { top: 50%; left: -6px; right: -6px; height: 1px; }
+.hud-crosshair::after { left: 50%; top: -6px; bottom: -6px; width: 1px; }
+
+/* Soul Hackers 2 Tactical Data Rows */
+.comp-stat-table {
+  width: 100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  border-collapse: collapse;
+}
+
+.comp-stat-table tr {
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.comp-stat-table td {
+  padding: 6px 4px;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  color: var(--pure-white);
+  font-weight: 700;
+  text-align: right;
+}
+
+.stat-bar-container {
+  width: 100%;
+  height: 6px;
+  background: var(--sub-panel);
+  margin-top: 4px;
+  border: 1px solid var(--border-dim);
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: var(--pure-white);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   SECTION COMMON STYLING (PERSONA 3 RELOAD HEADER CUTOUTS)
+   ========================================================================== */
+.section-wrapper {
+  position: relative;
+  padding: 80px 24px 140px;
+  max-width: 1300px;
+  margin: 0 auto;
+  z-index: 2;
+  scroll-margin-top: 60px;
+}
+
+.section-header-block {
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.section-number-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--void-black);
+  background: var(--pure-white);
+  padding: 2px 10px;
+  display: inline-block;
+  transform: skewX(var(--p3r-skew));
+  margin-bottom: 8px;
+}
+
+.section-number-tag span {
+  transform: skewX(var(--p3r-skew-rev));
+  display: inline-block;
+}
+
+.section-main-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  color: var(--pure-white);
+  text-transform: uppercase;
+  transform: skewX(-6deg);
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+.section-main-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 140%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pure-white) 0%, var(--border-mid) 70%, transparent 100%);
+}
+
+.section-desc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  margin-top: 18px;
+  max-width: 700px;
+}
+
+/* Atlus Stripe Accent */
+.zebra-stripes {
+  height: 6px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #000 0px,
+    #000 8px,
+    #fff 8px,
+    #fff 16px
+  );
+  margin: 16px 0 24px;
+  border: 1px solid var(--border-mid);
+}
+
+/* ==========================================================================
+   EXPERIENCE / BATTLE LOG SECTION
+   ========================================================================== */
+.filter-tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.tab-btn {
+  background: var(--dark-panel);
+  border: 1px solid var(--border-mid);
+  color: var(--text-sub);
+  padding: 8px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-tactical);
+  transform: skewX(var(--p3r-skew));
+}
+
+.tab-btn span {
+  transform: skewX(var(--p3r-skew-rev));
+  display: inline-block;
+}
+
+.tab-btn:hover {
+  background: var(--sub-panel);
+  color: var(--pure-white);
+  border-color: var(--pure-white);
+}
+
+.tab-btn.active {
+  background: var(--pure-white);
+  color: var(--void-black);
+  border-color: var(--pure-white);
+  font-weight: 800;
+  box-shadow: 4px 4px 0 var(--border-bright);
+}
+
+/* Experience Cards Timeline Grid */
+.experience-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.experience-card {
+  position: relative;
+  background: var(--pitch-black);
+  border: 2px solid var(--border-mid);
+  padding: 30px;
+  transition: all 0.25s var(--ease-tactical);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.7);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+}
+
+.experience-card:hover {
+  border-color: var(--pure-white);
+  transform: translateY(-4px) scale(1.005);
+  box-shadow: 12px 12px 0 var(--pure-white);
+}
+
+/* Current Role Special Accent */
+.experience-card.active-role {
+  border-color: var(--pure-white);
+  border-left: 8px solid var(--pure-white);
+  background: linear-gradient(135deg, rgba(26, 28, 35, 0.95), var(--pitch-black));
+}
+
+.card-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-dim);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.card-op-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--pure-white);
+  background: var(--sub-panel);
+  padding: 2px 8px;
+  border: 1px solid var(--border-dim);
+}
+
+.card-date-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--void-black);
+  background: var(--pure-white);
+  padding: 2px 10px;
+  transform: skewX(-6deg);
+}
+
+.card-role-title {
+  font-size: 1.8rem;
+  color: var(--pure-white);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.card-company-loc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  margin-bottom: 18px;
+}
+
+.company-name {
+  color: var(--pure-white);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.company-loc {
+  color: var(--text-muted);
+}
+
+/* Bullet Points with Atlus Glyphs */
+.bullet-list {
+  list-style: none;
+  margin-bottom: 22px;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  color: var(--off-white);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.bullet-list li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--pure-white);
+  font-size: 0.75rem;
+}
+
+.bullet-list li strong {
+  color: var(--pure-white);
+}
+
+/* Tech Badges Container */
+.card-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-dim);
+}
+
+.chip-tag {
+  background: var(--dark-panel);
+  border: 1px solid var(--border-dim);
+  color: var(--silver-accent);
+  padding: 3px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.chip-tag:hover {
+  background: var(--pure-white);
+  color: var(--void-black);
+  border-color: var(--pure-white);
+}
+
+/* ==========================================================================
+   SKILLS & SOUL MATRIX SECTION
+   ========================================================================== */
+.matrix-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 992px) {
+  .matrix-container {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.radar-card {
+  background: var(--pitch-black);
+  border: 2px solid var(--pure-white);
+  padding: 30px;
+  position: relative;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.radar-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-mid);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+}
+
+.radar-canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+}
+
+#skillsRadarCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.radar-legend {
+  margin-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-sub);
+}
+
+.legend-color-box {
+  width: 8px;
+  height: 8px;
+  background: var(--pure-white);
+}
+
+/* Skills Breakdown Categories */
+.skills-catalog-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skill-category-card {
+  background: var(--pitch-black);
+  border: 1px solid var(--border-mid);
+  border-left: 4px solid var(--pure-white);
+  padding: 22px;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.skill-category-card:hover {
+  border-color: var(--pure-white);
+  transform: translateX(4px);
+  background: var(--dark-panel);
+}
+
+.skill-cat-title {
+  font-size: 1.35rem;
+  color: var(--pure-white);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-cat-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.skill-chips-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.skill-chip-pill {
+  background: var(--sub-panel);
+  border: 1px solid var(--border-dim);
+  color: var(--pure-white);
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  clip-path: var(--tag-clip);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-chip-pill:hover {
+  background: var(--pure-white);
+  color: var(--void-black);
+  border-color: var(--pure-white);
+}
+
+.skill-chip-pill::before {
+  content: '▸';
+  font-size: 0.8rem;
+  color: var(--border-bright);
+}
+
+.skill-chip-pill:hover::before {
+  color: var(--void-black);
+}
+
+/* ==========================================================================
+   ACADEMIA & EDUCATION SECTION
+   ========================================================================== */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 992px) {
+  .education-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.edu-card {
+  background: var(--pitch-black);
+  border: 2px solid var(--border-mid);
+  padding: 30px;
+  position: relative;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.7);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.edu-card:hover {
+  border-color: var(--pure-white);
+  box-shadow: 10px 10px 0 var(--pure-white);
+}
+
+.edu-header {
+  border-bottom: 1px solid var(--border-dim);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.edu-degree {
+  font-size: 1.6rem;
+  color: var(--pure-white);
+  margin-bottom: 4px;
+}
+
+.edu-institution {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--pure-white);
+  font-weight: 700;
+}
+
+.edu-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.gpa-badge {
+  background: var(--pure-white);
+  color: var(--void-black);
+  padding: 2px 8px;
+  font-weight: 800;
+  transform: skewX(-6deg);
+}
+
+.edu-courses-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.course-tag {
+  background: var(--dark-panel);
+  border: 1px solid var(--border-dim);
+  padding: 4px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-sub);
+  transition: all 0.15s;
+}
+
+.course-tag:hover {
+  background: var(--pure-white);
+  color: var(--void-black);
+  border-color: var(--pure-white);
+}
+
+/* ==========================================================================
+   ORGANIZATIONAL LEADERSHIP & CERTIFICATIONS
+   ========================================================================== */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+
+@media (min-width: 992px) {
+  .two-col-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.org-card, .cert-card {
+  background: var(--pitch-black);
+  border: 1px solid var(--border-mid);
+  padding: 26px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.6);
+  border-left: 4px solid var(--pure-white);
+  transition: all 0.2s;
+}
+
+.org-card:hover, .cert-card:hover {
+  border-color: var(--pure-white);
+  transform: translateX(4px);
+  box-shadow: 8px 8px 0 var(--border-bright);
+}
+
+.cert-badge-stamp {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 2px solid var(--pure-white);
+  padding: 4px 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--pure-white);
+  transform: rotate(-6deg);
+  background: rgba(0,0,0,0.8);
+}
+
+/* ==========================================================================
+   COMM-LINK & CONTACT TERMINAL
+   ========================================================================== */
+.contact-container {
+  background: var(--pitch-black);
+  border: 2px solid var(--pure-white);
+  padding: 40px 30px;
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.1);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.comm-channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comm-link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--dark-panel);
+  border: 1px solid var(--border-mid);
+  color: var(--pure-white);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.comm-link-btn:hover {
+  background: var(--pure-white);
+  color: var(--void-black);
+  border-color: var(--pure-white);
+  transform: translateX(6px);
+  box-shadow: 4px 4px 0 var(--border-bright);
+}
+
+.comm-copy-btn {
+  background: transparent;
+  border: 1px solid currentColor;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Toast Notification for Clipboard Copy */
+.toast-msg {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: var(--pure-white);
+  color: var(--void-black);
+  padding: 10px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: 2px solid var(--void-black);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s var(--ease-snap);
+}
+
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   FOOTER - PERSONA PROTOCOL CONCLUSION
+   ========================================================================== */
+footer {
+  border-top: 2px solid var(--pure-white);
+  background: var(--void-black);
+  padding: 60px 24px 120px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-quote {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+  text-transform: uppercase;
+  color: var(--pure-white);
+  letter-spacing: 2px;
+  transform: skewX(-6deg);
+  margin-bottom: 12px;
+}
+
+.footer-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile & Tablet Responsiveness Enhancements */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 16px 50px;
+  }
+  .section-wrapper {
+    padding: 60px 16px 40px;
+  }
+  .hero-main-title {
+    font-size: 2.6rem;
+  }
+  .tactical-nav {
+    bottom: 12px;
+    padding: 4px;
+    gap: 2px;
+    border-width: 1px;
+  }
+  .nav-item {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .nav-item .nav-num {
+    display: none;
+  }
+  .experience-card, .radar-card, .edu-card, .contact-container {
+    padding: 20px 16px;
+  }
+}
+
+/* Laptop Viewport Height Optimization */
+@media (max-height: 850px) {
+  .hero-section {
+    padding-top: 24px;
+    padding-bottom: 120px;
+  }
+  .hero-main-title {
+    font-size: clamp(2rem, 4.2vw, 3.6rem);
+  }
+  .hero-summary-box {
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .hero-summary-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .portrait-window {
+    max-height: 240px;
+  }
+  .comp-dossier-card {
+    max-width: 360px;
+    padding: 16px;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLESHEET (CLEAN BLACK & WHITE CV EXPORT)
+   ========================================================================== */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .system-hud-bar, .tactical-nav, .scanlines, .bg-cyber-canvas, .bg-halftone-overlay, .bg-hex-grid, .hero-actions, .filter-tabs-row, .toast-msg, .audio-btn {
+    display: none !important;
+  }
+  .hero-section, .section-wrapper {
+    padding: 10px 0 !important;
+  }
+  .card, .experience-card, .edu-card, .org-card, .cert-card, .hero-summary-box {
+    border: 1px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, .card-role-title, .hero-main-title {
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+  .bullet-list li, .stat-label, .stat-value, .company-loc, .company-name, .hero-summary-text {
+    color: #111 !important;
+  }
+}

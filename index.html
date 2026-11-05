@@ -1,251 +1,940 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fierza Luthfi Avjadistia | S.E.E.S. Portfolio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
-
-        :root {
-            --p3r-dark-blue: #021a3a;
-            --p3r-bright-blue: #0077ff;
-            --p3r-cyan: #00e5ff;
-            --p3r-white: #f4f6f9;
-            --p3r-black: #0b0c10;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle at top right, var(--p3r-bright-blue), var(--p3r-dark-blue) 70%, var(--p3r-black));
-            color: var(--p3r-white);
-            font-family: 'Roboto', sans-serif;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Diagonal water/wave background effect */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 40%, rgba(0, 229, 255, 0.05) 45%, transparent 50%);
-            background-size: 20px 20px;
-            z-index: -1;
-            animation: waterFlow 20s linear infinite;
-        }
-
-        @keyframes waterFlow {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        header {
-            padding: 40px 20px;
-            text-align: left;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            background: var(--p3r-black);
-            border-bottom: 4px solid var(--p3r-cyan);
-        }
-
-        h1, h2, h3 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            margin: 0;
-        }
-
-        .header-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-bottom: 40px;
-        }
-
-        .header-content h1 {
-            font-size: 3.5rem;
-            color: var(--p3r-cyan);
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0px var(--p3r-bright-blue);
-            transform: skewX(-10deg);
-        }
-
-        .header-content p {
-            font-size: 1.2rem;
-            color: var(--p3r-white);
-            font-style: italic;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--p3r-white);
-            border-left: 8px solid var(--p3r-bright-blue);
-            padding-left: 15px;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 150%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--p3r-bright-blue), transparent);
-        }
-
-        .card {
-            background: rgba(11, 12, 16, 0.85);
-            border: 1px solid var(--p3r-bright-blue);
-            padding: 25px;
-            margin-bottom: 25px;
-            position: relative;
-            box-shadow: 5px 5px 0px rgba(0, 119, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 8px 8px 0px var(--p3r-cyan);
-            border-color: var(--p3r-cyan);
-        }
-
-        /* Glitch effect on hover for cards */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--p3r-cyan);
-        }
-
-        .job-title {
-            font-size: 1.5rem;
-            color: var(--p3r-cyan);
-            margin-bottom: 5px;
-        }
-
-        .company-date {
-            font-size: 0.9rem;
-            color: #a0c4ff;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        ul {
-            line-height: 1.6;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .skill-badge {
-            background: linear-gradient(135deg, var(--p3r-bright-blue), var(--p3r-dark-blue));
-            padding: 10px 20px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            border-right: 3px solid var(--p3r-cyan);
-            border-bottom: 3px solid var(--p3r-cyan);
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-            transition: 0.3s;
-        }
-
-        .skill-badge:hover {
-            background: var(--p3r-cyan);
-            color: var(--p3r-black);
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-            background: var(--p3r-black);
-            border-top: 2px solid var(--p3r-bright-blue);
-            font-family: 'Oswald', sans-serif;
-            letter-spacing: 2px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIERZA LUTHFI AVJADISTIA // S.E.E.S. x AION PORTFOLIO</title>
+  <meta name="description"
+    content="Portfolio Operasional & IT Operator Fierza Luthfi Avjadistia. Persona 3 Reload x Soul Hackers 2 Tactical Monochrome UI.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><polygon points='50,10 90,90 10,90' fill='%23fff'/></svg>">
 </head>
+
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>Fierza Luthfi Avjadistia</h1>
-            <p>Multimedia Graduate | Material Planner | Operations Coordinator</p>
-        </div>
-    </header>
+  <!-- Background Cyber Canvas & Halftone Overlays -->
+  <canvas id="cyberCanvas" class="bg-cyber-canvas"></canvas>
+  <div class="bg-hex-grid"></div>
+  <div class="bg-halftone-overlay"></div>
+  <div class="scanlines"></div>
 
-    <div class="container">
-        
-        <!-- EXPERIENCE SECTION -->
-        <h2 class="section-title">Professional Experience</h2>
+  <!-- Top System HUD Bar -->
+  <header class="system-hud-bar">
+    <div class="hud-left">
+      <div class="hud-tag">
+        <span>SYS_ONLINE</span>
+      </div>
+      <div class="hud-telemetry">
+        [ PROTOCOL: S.E.E.S. // AION NETWORK LINKED ]
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="dark-hour-indicator">
+        <span class="moon-phase-icon"></span>
+        <span id="moonPhaseText">PHASE: STABLE</span>
+      </div>
+      <div class="hud-time-container">
+        <span>UTC+7 //</span>
+        <span id="hudClock" class="font-tech">00:00:00</span>
+      </div>
+      <button id="audioToggleBtn" class="audio-btn" title="Toggle Atlus Sound FX">
+        <span>SFX: [ON]</span>
+      </button>
+    </div>
+  </header>
 
-        <div class="card">
-            <h3 class="job-title">Material Planner (Non-Aircraft Dept)</h3>
-            <div class="company-date">PT Dirgantara Indonesia | April 2026 - Present</div>
-            <ul>
-                <li>Mengelola perencanaan material inventaris dan operasional divisi non-aircraft.</li>
-                <li>Menganalisis data kebutuhan material menggunakan Microsoft Excel (Pivot Tables, Reorder Point formulas).</li>
-                <li>Mengoperasikan modul SAP Material Management untuk efisiensi logistik dan pelacakan barang.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3 class="job-title">Person In Charge (PIC) & Foundation Representative</h3>
-            <div class="company-date">Program Makan Bergizi Gratis (Dapur MBG) | Des 2025 - Mar 2026</div>
-            <ul>
-                <li>Bertanggung jawab penuh atas operasional dapur dan kelancaran distribusi program MBG di Sindangsari 3 Leuwigoong.</li>
-                <li>Mengelola pelaporan mingguan kegiatan dan berkoordinasi langsung dengan pihak yayasan.</li>
-                <li>Memastikan standar sanitasi dan penanganan makanan (food handling) diterapkan dengan baik.</li>
-            </ul>
-        </div>
-
-        <!-- EDUCATION SECTION -->
-        <h2 class="section-title">Education</h2>
-        <div class="card">
-            <h3 class="job-title">Degree in Multimedia</h3>
-            <div class="company-date">Telkom University</div>
-            <p>Fokus pada modifikasi digital, operasional teknologi, dan analisis data visual.</p>
-        </div>
-
-        <!-- SKILLS SECTION -->
-        <h2 class="section-title">Combat... er, Technical Skills</h2>
-        <div class="skills-container">
-            <div class="skill-badge">SAP Material Management</div>
-            <div class="skill-badge">Microsoft Excel (Adv)</div>
-            <div class="skill-badge">Digital Image Modification</div>
-            <div class="skill-badge">Inventory Logic</div>
-            <div class="skill-badge">IT & Hardware Troubleshooting</div>
-            <div class="skill-badge">Operations Coordination</div>
-        </div>
-
+  <!-- ========================================================================
+       HERO SECTION // OPERATOR DOSSIER
+       ======================================================================== -->
+  <section id="dossier" class="hero-section">
+    <div class="tactical-alert-ribbon">
+      <span>TACTICAL DOSSIER // CLASSIFIED S-RANK // SECTOR 0895</span>
     </div>
 
-    <footer>
-        <p>SEAL THE DEAL. &copy; 2026 FIERZA LUTHFI AVJADISTIA</p>
-    </footer>
+    <div class="hero-grid">
+      <!-- Left Column: Dossier Briefing -->
+      <div class="hero-info-col">
+        <div class="hero-name-block">
+          <span class="hero-kanji-sub">フィエルザ・ルトフィ・アヴジャディスティア // OPERATOR ID: FLA-2026</span>
+          <h1 class="hero-main-title">
+            <span class="first-name">FIERZA LUTHFI</span>
+            <span class="last-name">AVJADISTIA</span>
+          </h1>
 
+          <div class="hero-title-badge-row">
+            <div class="tactical-badge">D4 TEKNOLOGI REKAYASA MULTIMEDIA</div>
+            <div class="tactical-badge">DATA & SYSTEM ADMINISTRATOR</div>
+            <div class="tactical-badge">IT OPERATIONS SPECIALIST</div>
+          </div>
+        </div>
+
+        <div class="hero-summary-box">
+          <div class="summary-badge-header">
+            <span class="summary-badge-text">OPERATOR BRIEFING // VERIFIED RECORD</span>
+          </div>
+          <p class="hero-summary-text">
+            Lulusan <strong>Diploma IV Teknologi Rekayasa Multimedia Telkom University</strong> dengan
+            <strong>5+ tahun pengalaman</strong> dalam pengelolaan data, administrasi perkantoran dan sekolah,
+            administrasi pengadaan, dan maintenance sistem IT. Saat ini bertugas sebagai <strong>Tata Usaha di SMA
+              Swasta YWKA Bandung</strong>,
+            mengelola administrasi sekolah, website database perpustakaan, serta sistem surat menyurat otomatis berbasis
+            web.
+            Terbukti andal mengelola basis data, mengkoordinasikan pengadaan barang, menyusun laporan berkala, dan
+            melaksanakan maintenance preventif
+            untuk efisiensi operasional maksimal berorientasi akurasi terukur.
+          </p>
+        </div>
+
+        <!-- Telemetry Stats Row -->
+        <div class="telemetry-row">
+          <div class="telemetry-item">
+            <div class="t-val">05+</div>
+            <div class="t-lbl">TAHUN PENGALAMAN</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="t-val">08</div>
+            <div class="t-lbl">MISI OPERASIONAL</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="t-val">3.45</div>
+            <div class="t-lbl">IPK TELKOM UNIV</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="t-val">507</div>
+            <div class="t-lbl">TOEFL SCORE</div>
+          </div>
+        </div>
+
+        <!-- Tactical Action Buttons -->
+        <div class="hero-actions">
+          <a href="#experience" class="btn-tactical btn-tactical-primary">
+            <span>[02] TELUSURI MISI</span>
+          </a>
+          <button id="printCvBtn" class="btn-tactical btn-tactical-outline">
+            <span>CETAK / EKSPOR CV [PDF]</span>
+          </button>
+          <a href="#contact" class="btn-tactical btn-tactical-outline">
+            <span>[07] HUBUNGI OPERATOR</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Soul Hackers 2 COMP Terminal Display -->
+      <div class="hero-portrait-frame">
+        <div class="comp-dossier-card">
+          <div class="comp-card-header">
+            <span class="comp-id-stamp">AION-COMP // UNIT-01</span>
+            <span class="comp-sync-rate">SYNC: 99.8%</span>
+          </div>
+
+          <div class="portrait-window">
+            <img src="fierza_profile.jpg" alt="Fierza Luthfi Avjadistia Profile Portrait"
+              onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 300\'><rect width=\'300\' height=\'300\' fill=\'%23111\'/><text x=\'50%25\' y=\'50%25\' fill=\'%23fff\' font-family=\'monospace\' font-size=\'16\' text-anchor=\'middle\'>OPERATOR PHOTO</text></svg>';">
+
+            <div class="portrait-hud-overlay">
+              <div class="hud-corner corner-tl"></div>
+              <div class="hud-corner corner-tr"></div>
+              <div class="hud-corner corner-bl"></div>
+              <div class="hud-corner corner-br"></div>
+              <div class="hud-crosshair"></div>
+            </div>
+          </div>
+
+          <!-- COMP Telemetry Readout Table -->
+          <table class="comp-stat-table">
+            <tr>
+              <td class="stat-label">CODENAME</td>
+              <td class="stat-value">FIERZA LUTHFI</td>
+            </tr>
+            <tr>
+              <td class="stat-label">DOMISILI</td>
+              <td class="stat-value">GARUT, JAWA BARAT</td>
+            </tr>
+            <tr>
+              <td class="stat-label">CLEARANCE</td>
+              <td class="stat-value">S.E.E.S. LEVEL S</td>
+            </tr>
+            <tr>
+              <td class="stat-label">CURRENT ROLE</td>
+              <td class="stat-value">TATA USAHA (SMA YWKA)</td>
+            </tr>
+            <tr>
+              <td class="stat-label">STATUS</td>
+              <td class="stat-value">[DEPLOYED // READY]</td>
+            </tr>
+          </table>
+
+          <div class="stat-bar-container">
+            <div class="stat-bar-fill" style="width: 98%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="zebra-stripes"></div>
+
+  <!-- ========================================================================
+       SECTION 02 // BATTLE LOG / RIWAYAT PENUGASAN (EXPERIENCE)
+       ======================================================================== -->
+  <section id="experience" class="section-wrapper">
+    <div class="section-header-block">
+      <div class="section-number-tag"><span>[COMMAND 02] // COMBAT LOG</span></div>
+      <h2 class="section-main-title">RIWAYAT PENUGASAN KERJA</h2>
+      <p class="section-desc">
+        Dokumentasi komprehensif 8 penugasan operasional: administrasi perkantoran, tata kelola data publik,
+        dukungan infrastruktur IT enterprise, hingga pemeliharaan jaringan & sistem preventif.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="filter-tabs-row">
+      <button class="tab-btn active" data-filter="all"><span>[ALL MISSIONS (08)]</span></button>
+      <button class="tab-btn" data-filter="education"><span>[AKADEMIK & SEKOLAH]</span></button>
+      <button class="tab-btn" data-filter="enterprise"><span>[IT & ENTERPRISE]</span></button>
+      <button class="tab-btn" data-filter="gov"><span>[PEMERINTAH & PUBLIK]</span></button>
+    </div>
+
+    <!-- Experience Grid -->
+    <div class="experience-grid">
+
+      <!-- 1. SMA Swasta YWKA Bandung -->
+      <article class="experience-card active-role" data-category="education enterprise">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-01 // ACTIVE ASSIGNMENT</span>
+          <span class="card-date-badge">AGUSTUS 2026 - SEKARANG</span>
+        </div>
+        <h3 class="card-role-title">TATA USAHA</h3>
+        <div class="card-company-loc">
+          <span class="company-name">SMA Swasta YWKA</span>
+          <span class="company-loc">Bandung, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengelola administrasi ketatausahaan sekolah secara menyeluruh, mencakup <strong>pengarsipan dokumen
+              resmi, data pokok siswa, serta data kepegawaian</strong> tenaga pendidik dan kependidikan.</li>
+          <li>Mengelola <strong>website dan database perpustakaan</strong>, meliputi peremajaan berkala koleksi pustaka
+            digital, pembaruan master data anggota, serta digitalisasi pencatatan sirkulasi peminjaman.</li>
+          <li>Mengembangkan dan mengoperasikan <strong>sistem surat menyurat otomatis berbasis web</strong> guna
+            meningkatkan efisiensi dan akselerasi pembuatan, registrasi penomoran, tracking, serta pengarsipan surat
+            masuk dan surat keluar.</li>
+          <li>Menyusun laporan administrasi sekolah secara periodik dan terstruktur untuk kebutuhan evaluasi pimpinan
+            dan pelaporan pemangku kepentingan terkait.</li>
+          <li>Menyediakan asistensi dan dukungan teknis (IT support) bagi guru, staf, dan siswa dalam pemanfaatan dan
+            optimalisasi sistem informasi sekolah.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Sistem Surat Otomatis</span>
+          <span class="chip-tag">Website & DB Perpustakaan</span>
+          <span class="chip-tag">Administrasi Kepegawaian</span>
+          <span class="chip-tag">Pengarsipan Dokumen</span>
+          <span class="chip-tag">IT Support Civitas</span>
+        </div>
+      </article>
+
+      <!-- 2. Program Makan Bergizi Gratis (MBG) -->
+      <article class="experience-card" data-category="gov enterprise">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-02 // GOVERNMENT INITIATIVE</span>
+          <span class="card-date-badge">2025</span>
+        </div>
+        <h3 class="card-role-title">PIC PROGRAM MAKAN BERGIZI GRATIS (MBG)</h3>
+        <div class="card-company-loc">
+          <span class="company-name">Program Pemerintah</span>
+          <span class="company-loc">Garut, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengelola master database penerima manfaat program MBG secara presisi, mencakup segmen <strong>anak
+              sekolah, ibu hamil, dan ibu menyusui</strong>, memastikan validitas dan integritas data untuk pelaporan
+            resmi instansi.</li>
+          <li>Mengkoordinasikan proses <strong>pengadaan bahan makanan bergizi</strong> bekerja sama dengan vendor serta
+            UMKM lokal berlandaskan standar kelayakan gizi dan regulasi pemerintah.</li>
+          <li>Melaksanakan <strong>monitoring distribusi logistik serta stock control</strong> bahan makanan secara
+            harian guna menjamin kontinuitas ketersediaan dan menjaga mutu standar nutrisi yang disalurkan.</li>
+          <li>Menyusun laporan berkala kepada instansi terkait mengenai realisasi anggaran program, jumlah riil penerima
+            manfaat, metrik kepatuhan, serta evaluasi komprehensif pelaksanaan.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Database Penerima Manfaat</span>
+          <span class="chip-tag">Stock Control & Logistics</span>
+          <span class="chip-tag">Pengadaan Vendor & UMKM</span>
+          <span class="chip-tag">Monitoring Distribusi</span>
+          <span class="chip-tag">Laporan Realisasi Program</span>
+        </div>
+      </article>
+
+      <!-- 3. PT. VRCHINDO Digital Solutions -->
+      <article class="experience-card" data-category="enterprise">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-03 // IT ENTERPRISE OPERATIONS</span>
+          <span class="card-date-badge">2024</span>
+        </div>
+        <h3 class="card-role-title">IT SUPPORT ENGINEER</h3>
+        <div class="card-company-loc">
+          <span class="company-name">PT. VRCHINDO Digital Solutions</span>
+          <span class="company-loc">Bandung, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengelola <strong>inventory dan dokumentasi aset IT</strong> terpadu menggunakan sistem tracking
+            maintenance berkala serta menyusun roadmap perencanaan penggantian perangkat secara terukur.</li>
+          <li>Melaksanakan prosedur <strong>preventive dan corrective maintenance</strong> secara terjadwal untuk
+            meminimalisir downtime operasional dan memaksimalkan lifecycle perangkat keras dan lunak.</li>
+          <li>Menyusun laporan pemeliharaan berkala yang dilengkapi analisis akar penyebab kerusakan (RCA) dan
+            rekomendasi pengadaan spare parts pengganti yang efisien.</li>
+          <li>Mengkoordinasikan proses <strong>pengadaan perangkat IT dan suku cadang</strong> bersama vendor mitra,
+            termasuk verifikasi kecocokan spesifikasi teknis dan dokumentasi purchasing.</li>
+          <li>Memberikan technical support dan menangani troubleshooting dengan <strong>fast response time</strong> demi
+            menjamin kelancaran alur kerja operasional perusahaan.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Preventive Maintenance</span>
+          <span class="chip-tag">IT Asset Tracking</span>
+          <span class="chip-tag">Hardware Lifecycle</span>
+          <span class="chip-tag">Vendor & Spare Parts</span>
+          <span class="chip-tag">Fast Response Support</span>
+        </div>
+      </article>
+
+      <!-- 4. SMK Swasta Korpora -->
+      <article class="experience-card" data-category="education enterprise">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-04 // ACADEMIC IT & DATA INFRASTRUCTURE</span>
+          <span class="card-date-badge">2022 - 2023</span>
+        </div>
+        <h3 class="card-role-title">IT SUPPORT & DATA ADMINISTRATOR</h3>
+        <div class="card-company-loc">
+          <span class="company-name">SMK Swasta Korpora</span>
+          <span class="company-loc">Garut, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengelola database kesiswaan dan menyusun laporan evaluasi akademik berkala untuk kebutuhan monitoring
+            progres pembelajaran dan administrasi internal sekolah.</li>
+          <li>Mengelola inventaris aset perangkat IT sekolah serta mengkoordinasikan perencanaan dan pengadaan
+            hardware/software sesuai dinamika kebutuhan operasional.</li>
+          <li>Mengeksekusi jadwal <strong>maintenance preventif</strong> terhadap perangkat komputer laboratorium,
+            infrastruktur jaringan LAN/WLAN, dan server sekolah demi stabilitas operasional.</li>
+          <li>Menyusun dokumentasi pemeliharaan lengkap dan laporan status kondisi aset IT untuk tracking riwayat
+            perbaikan dan rekomendasi peremajaan unit.</li>
+          <li>Menyediakan dukungan teknis bagi jajaran staf dan peserta didik, sekaligus mengelola akun pengguna, hak
+            akses, dan tata kelola keamanan sistem internal sekolah.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Database Kesiswaan</span>
+          <span class="chip-tag">LAN / Network Maintenance</span>
+          <span class="chip-tag">Aset Komputer & Lab</span>
+          <span class="chip-tag">User Access Control</span>
+          <span class="chip-tag">Dokumentasi Log Pemeliharaan</span>
+        </div>
+      </article>
+
+      <!-- 5. UPTD Puskesmas Cibatu -->
+      <article class="experience-card" data-category="gov">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-05 // PUBLIC HEALTHCARE DATA</span>
+          <span class="card-date-badge">2021</span>
+        </div>
+        <h3 class="card-role-title">DATA ADMINISTRATOR COVID-19</h3>
+        <div class="card-company-loc">
+          <span class="company-name">UPTD Puskesmas Cibatu</span>
+          <span class="company-loc">Garut, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengelola dan memelihara <strong>basis data vaksinasi massal Covid-19</strong> wilayah Cibatu, mencakup
+            verifikasi identitas pribadi warga, jenis vaksin, batch number, serta jadwal dosis.</li>
+          <li>Menjalankan proses <strong>verifikasi dan rekonsiliasi data</strong> bertingkat guna memastikan akurasi
+            data tanpa anomali dan kepatuhan penuh terhadap dokumen fisik vaksinasi resmi.</li>
+          <li>Menyusun laporan rekapitulasi harian dan bulanan mengenai progres capaian vaksinasi untuk didistribusikan
+            ke Dinas Kesehatan Kabupaten dan instansi pengendali.</li>
+          <li>Mengoperasikan sistem pelaporan digital terpadu untuk mempermudah monitoring, tracing, dan audit data
+            vaksinasi oleh otoritas berwenang.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Healthcare Database</span>
+          <span class="chip-tag">Verifikasi & Validasi Data</span>
+          <span class="chip-tag">Pelaporan Dinkes</span>
+          <span class="chip-tag">Audit Data Vaksinasi</span>
+          <span class="chip-tag">Data Quality Control</span>
+        </div>
+      </article>
+
+      <!-- 6. SDN 1 Cigagade -->
+      <article class="experience-card" data-category="education gov">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-06 // NATIONAL EDUCATION DATA SYSTEM</span>
+          <span class="card-date-badge">2021</span>
+        </div>
+        <h3 class="card-role-title">OPERATOR SEKOLAH (DAPODIK)</h3>
+        <div class="card-company-loc">
+          <span class="company-name">SDN 1 Cigagade</span>
+          <span class="company-loc">Limbangan, Garut, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengelola seluruh input data kesiswaan dan berkas administrasi sekolah termasuk pencatatan kehadiran,
+            kurikulum, nilai rapor, dan rekam jejak akademik pada <strong>Sistem Aplikasi Dapodik</strong> Kemendikbud.
+          </li>
+          <li>Menyusun dan menyinkronkan laporan periodik data pokok pendidikan secara valid untuk pelaporan ke Dinas
+            Pendidikan Kabupaten dan sinkronisasi server pusat.</li>
+          <li>Mengelola arsip surat-menyurat dinas, pencatatan inventaris sarana prasarana sekolah, serta administrasi
+            berkas kepegawaian guru honorer dan PNS.</li>
+          <li>Memberikan technical support dan troubleshooting terhadap perangkat komputer, printer, dan jaringan
+            internet yang menunjang operasional sekolah.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Sistem Dapodik Kemdikbud</span>
+          <span class="chip-tag">Sinkronisasi Data Nasional</span>
+          <span class="chip-tag">Arsip Surat Menyurat</span>
+          <span class="chip-tag">Inventaris Sarpras</span>
+          <span class="chip-tag">IT Support Kantor</span>
+        </div>
+      </article>
+
+      <!-- 7. PT. Jagad Creative -->
+      <article class="experience-card" data-category="enterprise">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-07 // DIGITAL MARKETING & MULTIMEDIA</span>
+          <span class="card-date-badge">JULI 2020 - DESEMBER 2020</span>
+        </div>
+        <h3 class="card-role-title">DIGITAL MARKETING OFFICER INTERN</h3>
+        <div class="card-company-loc">
+          <span class="company-name">PT. Jagad Creative</span>
+          <span class="company-loc">Bandung, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengelola dan menganalisis kumpulan data metrik media sosial guna mengevaluasi performa kampanye klien dan
+            merumuskan rekomendasi strategi berbasis fakta data.</li>
+          <li>Menyusun laporan analisis berkala yang mengukur parameter <strong>engagement rate, reach, impression, dan
+              conversion rate</strong> untuk evaluasi performa pemasaran.</li>
+          <li>Mengelola konten website perusahaan dan menyusun content calendar terjadwal demi memastikan konsistensi
+            dan ketepatan waktu publikasi materi.</li>
+          <li>Mendesain materi promosi digital berstandar visual tinggi menggunakan <strong>Adobe Photoshop dan
+              CorelDRAW</strong> untuk kebutuhan branding kampanye.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Adobe Photoshop</span>
+          <span class="chip-tag">CorelDRAW</span>
+          <span class="chip-tag">Social Media Analytics</span>
+          <span class="chip-tag">Content Calendar</span>
+          <span class="chip-tag">Website Management</span>
+        </div>
+      </article>
+
+      <!-- 8. PT. Dirgantara Indonesia -->
+      <article class="experience-card" data-category="enterprise">
+        <div class="card-top-bar">
+          <span class="card-op-code">OP-08 // AEROSPACE IT INFRASTRUCTURE</span>
+          <span class="card-date-badge">2017</span>
+        </div>
+        <h3 class="card-role-title">IT SUPPORT TECHNICIAN</h3>
+        <div class="card-company-loc">
+          <span class="company-name">PT. Dirgantara Indonesia (Persero)</span>
+          <span class="company-loc">Bandung, Jawa Barat</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Melaksanakan <strong>preventive maintenance rutin</strong> terhadap perangkat keras workstation, printer,
+            periferal, dan perangkat lunak untuk mengeliminasi potensi hambatan teknis.</li>
+          <li>Mendokumentasikan seluruh log aktivitas troubleshooting dan lembar pemeliharaan teknis untuk kebutuhan
+            audit internal dan tracking riwayat unit perangkat.</li>
+          <li>Membantu monitoring konektivitas infrastruktur jaringan lokal (LAN) serta menangani penelusuran masalah
+            (troubleshooting) koneksi jaringan pengguna.</li>
+          <li>Memberikan technical support langsung kepada user, termasuk instalasi sistem operasi, konfigurasi software
+            standar korporat, dan pengujian kesiapan perangkat.</li>
+        </ul>
+        <div class="card-tech-stack">
+          <span class="chip-tag">Preventive Maintenance</span>
+          <span class="chip-tag">Local Area Network (LAN)</span>
+          <span class="chip-tag">OS & Software Setup</span>
+          <span class="chip-tag">Troubleshooting Workstation</span>
+          <span class="chip-tag">Maintenance Log Audit</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="zebra-stripes"></div>
+
+  <!-- ========================================================================
+       SECTION 03 // SOUL MATRIX & SKILLS INVENTORY
+       ======================================================================== -->
+  <section id="skills" class="section-wrapper">
+    <div class="section-header-block">
+      <div class="section-number-tag"><span>[COMMAND 03] // SOUL MATRIX</span></div>
+      <h2 class="section-main-title">MATRIKS KEAHLIAN & KOMPETENSI</h2>
+      <p class="section-desc">
+        Pemetaan kemampuan teknis dan manajerial berlandaskan pengujian praktis 5+ tahun dalam tata kelola data,
+        infrastruktur IT, koordinasi pengadaan, dan otomasi perkantoran.
+      </p>
+    </div>
+
+    <div class="matrix-container">
+      <!-- Left Column: Hexagonal Radar Chart (Soul Hackers 2 Aion Interface) -->
+      <div class="radar-card">
+        <div class="radar-header">
+          <span>AION_COMPREHENSION // RADAR</span>
+          <span>SYSTEM_EVAL: OPTIMAL</span>
+        </div>
+        <div class="radar-canvas-container">
+          <canvas id="skillsRadarCanvas" width="380" height="380"></canvas>
+        </div>
+        <div class="radar-legend">
+          <div class="legend-item">
+            <div class="legend-color-box"></div><span>DB & ARSIP (95%)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box"></div><span>HW & JARINGAN (92%)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box"></div><span>OTOMASI WEB (90%)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box"></div><span>PENGADAAN & ASET (88%)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box"></div><span>ADVANCED EXCEL (96%)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box"></div><span>MULTIMEDIA & UI (86%)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Categorized Skill Breakdown -->
+      <div class="skills-catalog-col">
+
+        <!-- Group 01: Information Systems & Database -->
+        <div class="skill-category-card">
+          <h3 class="skill-cat-title">
+            <span>SISTEM INFORMASI & BASIS DATA</span>
+          </h3>
+          <span class="skill-cat-code">MODULE_01 // DATA_MANAGEMENT</span>
+          <div class="skill-chips-cloud">
+            <span class="skill-chip-pill">Pengelolaan Basis Data</span>
+            <span class="skill-chip-pill">Sistem Informasi Perpustakaan</span>
+            <span class="skill-chip-pill">Otomasi Surat Berbasis Web</span>
+            <span class="skill-chip-pill">Sistem Aplikasi Dapodik</span>
+            <span class="skill-chip-pill">Pengelolaan Website</span>
+            <span class="skill-chip-pill">Vue.js Introduction</span>
+          </div>
+        </div>
+
+        <!-- Group 02: Office Administration & Data Integrity -->
+        <div class="skill-category-card">
+          <h3 class="skill-cat-title">
+            <span>ADMINISTRASI & INTEGRITAS DATA</span>
+          </h3>
+          <span class="skill-cat-code">MODULE_02 // GOVERNANCE_REPORTS</span>
+          <div class="skill-chips-cloud">
+            <span class="skill-chip-pill">Administrasi Ketatausahaan</span>
+            <span class="skill-chip-pill">Pengarsipan Dokumen Resmi</span>
+            <span class="skill-chip-pill">Verifikasi & Validasi Data</span>
+            <span class="skill-chip-pill">Penyusunan Laporan Berkala</span>
+            <span class="skill-chip-pill">Data Entry & Quality Control</span>
+            <span class="skill-chip-pill">Analisis Data Operasional</span>
+          </div>
+        </div>
+
+        <!-- Group 03: IT Maintenance & Network Infrastructure -->
+        <div class="skill-category-card">
+          <h3 class="skill-cat-title">
+            <span>INFRASTRUKTUR IT & JARINGAN</span>
+          </h3>
+          <span class="skill-cat-code">MODULE_03 // HARDWARE_NETWORK</span>
+          <div class="skill-chips-cloud">
+            <span class="skill-chip-pill">Preventive Maintenance</span>
+            <span class="skill-chip-pill">Corrective Maintenance</span>
+            <span class="skill-chip-pill">Troubleshooting PC & Laptop</span>
+            <span class="skill-chip-pill">Pemeliharaan Jaringan (LAN/WLAN)</span>
+            <span class="skill-chip-pill">Jadwal Maintenance Berkala</span>
+            <span class="skill-chip-pill">Dokumentasi Maintenance Log</span>
+          </div>
+        </div>
+
+        <!-- Group 04: Procurement, Asset & Stock Logistics -->
+        <div class="skill-category-card">
+          <h3 class="skill-cat-title">
+            <span>PENGADAAN, ASET & LOGISTIK</span>
+          </h3>
+          <span class="skill-cat-code">MODULE_04 // PROCUREMENT_SUPPLY</span>
+          <div class="skill-chips-cloud">
+            <span class="skill-chip-pill">Administrasi Pengadaan Barang</span>
+            <span class="skill-chip-pill">Manajemen Inventory & Aset</span>
+            <span class="skill-chip-pill">Koordinasi Vendor & Mitra</span>
+            <span class="skill-chip-pill">Stock Control & Monitoring</span>
+            <span class="skill-chip-pill">Dokumentasi Pembelian & PO</span>
+            <span class="skill-chip-pill">Verifikasi Spesifikasi Teknis</span>
+          </div>
+        </div>
+
+        <!-- Group 05: Office Productivity & Graphic Media -->
+        <div class="skill-category-card">
+          <h3 class="skill-cat-title">
+            <span>MICROSOFT OFFICE & DIGITAL DESIGN</span>
+          </h3>
+          <span class="skill-cat-code">MODULE_05 // PRODUCTIVITY_SUITE</span>
+          <div class="skill-chips-cloud">
+            <span class="skill-chip-pill">Microsoft Excel (Pivot Table, VLOOKUP)</span>
+            <span class="skill-chip-pill">Microsoft Word (Persuratan & Laporan)</span>
+            <span class="skill-chip-pill">Microsoft PowerPoint</span>
+            <span class="skill-chip-pill">Microsoft Outlook</span>
+            <span class="skill-chip-pill">Adobe Photoshop</span>
+            <span class="skill-chip-pill">CorelDRAW</span>
+          </div>
+        </div>
+
+        <!-- Group 06: Soft Skills & Persona Attributes -->
+        <div class="skill-category-card">
+          <h3 class="skill-cat-title">
+            <span>ATTRIBUTES & SOFT SKILLS</span>
+          </h3>
+          <span class="skill-cat-code">MODULE_06 // OPERATOR_ATTRIBUTES</span>
+          <div class="skill-chips-cloud">
+            <span class="skill-chip-pill">Problem Solving Berorientasi Solusi</span>
+            <span class="skill-chip-pill">Manajemen Waktu Efektif</span>
+            <span class="skill-chip-pill">Fleksibilitas Kerja Tinggi</span>
+            <span class="skill-chip-pill">Berpikiran Terbuka (Open-Minded)</span>
+            <span class="skill-chip-pill">Kedisiplinan & Ketelitian Maksimal</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="zebra-stripes"></div>
+
+  <!-- ========================================================================
+       SECTION 04 // ACADEMIA & EDUCATION
+       ======================================================================== -->
+  <section id="education" class="section-wrapper">
+    <div class="section-header-block">
+      <div class="section-number-tag"><span>[COMMAND 04] // ARCHIVES</span></div>
+      <h2 class="section-main-title">JEJAK RIWAYAT PENDIDIKAN</h2>
+      <p class="section-desc">
+        Fondasi keilmuan teknologi rekayasa multimedia, pemrograman terstruktur, arsitektur data,
+        dan penguasaan perangkat keras & jaringan komputer.
+      </p>
+    </div>
+
+    <div class="education-grid">
+      <!-- 1. Telkom University -->
+      <article class="edu-card">
+        <div class="edu-header">
+          <span class="card-op-code">HIGHER EDUCATION // D4 MULTIMEDIA</span>
+          <h3 class="edu-degree">DIPLOMA IV TEKNOLOGI REKAYASA MULTIMEDIA</h3>
+          <div class="edu-institution">TELKOM UNIVERSITY</div>
+          <div class="edu-meta-row">
+            <span>2017 - 2021 // BANDUNG</span>
+            <span class="gpa-badge">IPK 3,45 / 4.00</span>
+          </div>
+        </div>
+        <div class="edu-courses-label">Mata Kuliah Relevan:</div>
+        <div class="course-grid">
+          <span class="course-tag">Rekayasa Perangkat Lunak</span>
+          <span class="course-tag">Algoritma & Struktur Data</span>
+          <span class="course-tag">Interaksi Manusia & Komputer</span>
+          <span class="course-tag">Grafika & Citra Komputer</span>
+          <span class="course-tag">Pemrograman Berorientasi Objek</span>
+          <span class="course-tag">Jaringan Komputer</span>
+          <span class="course-tag">Perangkat Keras & Jaringan</span>
+          <span class="course-tag">Teknologi & Pemrograman Multimedia</span>
+          <span class="course-tag">Basis Data</span>
+          <span class="course-tag">Sistem Operasi</span>
+          <span class="course-tag">Kecerdasan Buatan</span>
+          <span class="course-tag">Pengujian Perangkat Lunak</span>
+          <span class="course-tag">Pengolahan Sinyal Digital</span>
+          <span class="course-tag">Manajemen Proyek Multimedia</span>
+        </div>
+      </article>
+
+      <!-- 2. SMKN 6 Garut -->
+      <article class="edu-card">
+        <div class="edu-header">
+          <span class="card-op-code">VOCATIONAL HIGH SCHOOL // TKJ</span>
+          <h3 class="edu-degree">TEKNIK KOMPUTER DAN JARINGAN</h3>
+          <div class="edu-institution">SMKN 6 GARUT</div>
+          <div class="edu-meta-row">
+            <span>2014 - 2017 // GARUT</span>
+            <span class="gpa-badge">LULUS KOMPETEN</span>
+          </div>
+        </div>
+        <div class="edu-courses-label">Mata Pelajaran & Keahlian Praktis:</div>
+        <div class="course-grid">
+          <span class="course-tag">Instalasi & Perawatan Perangkat Keras</span>
+          <span class="course-tag">Perawatan Jaringan Komputer</span>
+          <span class="course-tag">Troubleshooting Jaringan</span>
+          <span class="course-tag">Teknik Instalasi Kabel (UTP, Crimping, Tester)</span>
+          <span class="course-tag">Dasar Keamanan Jaringan</span>
+          <span class="course-tag">Konfigurasi Firewall</span>
+          <span class="course-tag">Teknik Enkripsi Data</span>
+          <span class="course-tag">Perlindungan Siber Dasar</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="zebra-stripes"></div>
+
+  <!-- ========================================================================
+       SECTION 05 // SYNDICATE & ORGANIZATIONS
+       ======================================================================== -->
+  <section id="organization" class="section-wrapper">
+    <div class="section-header-block">
+      <div class="section-number-tag"><span>[COMMAND 05] // SYNDICATE</span></div>
+      <h2 class="section-main-title">KEPEMIMPINAN & ORGANISASI</h2>
+      <p class="section-desc">
+        Pengalaman koordinasi data berskala nasional dan kepemimpinan operasional event berskala 500+ audiens.
+      </p>
+    </div>
+
+    <div class="two-col-grid">
+      <!-- 1. Bawaslu Limbangan -->
+      <article class="org-card">
+        <span class="card-op-code">ELECTION GOVERNANCE // 2024</span>
+        <h3 class="card-role-title" style="font-size:1.5rem; margin-top:8px;">KOORDINATOR DATA PEMILU</h3>
+        <div class="card-company-loc">
+          <span class="company-name">Badan Pengawas Pemilu (Bawaslu) Limbangan</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Memproses, memverifikasi secara ketat, dan mengunggah data pengawasan pemilu ke sistem pusat secara tepat
+            waktu, memastikan akurasi data serta kepatuhan penuh terhadap regulasi yang berlaku.</li>
+          <li>Mengkoordinasikan mekanisme pengumpulan data lapangan dari berbagai titik TPS dan melakukan cross-check
+            sistematis guna mengeliminasi kesalahan atau duplikasi informasi.</li>
+          <li>Menyusun laporan analisis rekapitulasi data pemilu yang komprehensif dan menyampaikan hasilnya kepada
+            pimpinan serta pihak berwenang.</li>
+          <li>Mengelola infrastruktur penyimpanan data yang aman (secure storage) dan memberikan bimbingan teknis bagi
+            petugas lapangan.</li>
+        </ul>
+      </article>
+
+      <!-- 2. Nihon no Matsuri -->
+      <article class="org-card">
+        <span class="card-op-code">CULTURAL PRODUCTION // 2018</span>
+        <h3 class="card-role-title" style="font-size:1.5rem; margin-top:8px;">KOORDINATOR NIHON NO MATSURI</h3>
+        <div class="card-company-loc">
+          <span class="company-name">Acara Budaya Jepang</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Mengkoordinasikan penyelenggaraan acara festival budaya berskala besar dengan mengelola rantai logistik,
+            perizinan, administrasi, dan alur koordinasi lintas stakeholder.</li>
+          <li>Mengelola anggaran operasional dan memimpin pengadaan kebutuhan festival, termasuk negosiasi dan
+            koordinasi vendor venue, tata suara, perlengkapan, dan konsumsi.</li>
+          <li>Berhasil menarik <strong>500+ pengunjung</strong> melalui strategi promosi terstruktur, publikasi digital,
+            serta pengelolaan alur acara yang rapi.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <div class="zebra-stripes"></div>
+
+  <!-- ========================================================================
+       SECTION 06 // LICENSES & CERTIFICATIONS
+       ======================================================================== -->
+  <section id="certifications" class="section-wrapper">
+    <div class="section-header-block">
+      <div class="section-number-tag"><span>[COMMAND 06] // LICENSES</span></div>
+      <h2 class="section-main-title">SERTIFIKASI PROFESIONAL</h2>
+      <p class="section-desc">
+        Kualifikasi resmi kemampuan bahasa asing dan penguasaan aplikasi lembar kerja data terakreditasi.
+      </p>
+    </div>
+
+    <div class="two-col-grid">
+      <!-- 1. TOEFL -->
+      <article class="cert-card">
+        <div class="cert-badge-stamp">SKOR: 507</div>
+        <span class="card-op-code">LANGUAGE PROFICIENCY // CERTIFIED</span>
+        <h3 class="card-role-title" style="font-size:1.4rem; margin-top:8px;">TOEFL (Test of English as a Foreign
+          Language)</h3>
+        <div class="card-company-loc">
+          <span class="company-name">Universal English</span>
+        </div>
+        <p style="font-size:0.9rem; color:var(--text-sub); margin-top:8px;">
+          Pengujian standar internasional kompetensi mendengar, tata bahasa, dan membaca dalam bahasa Inggris dengan
+          skor terverifikasi <strong>507</strong>.
+        </p>
+      </article>
+
+      <!-- 2. MySkill Suite -->
+      <article class="cert-card">
+        <span class="card-op-code">TECHNICAL ACCREDITATION // 2026</span>
+        <h3 class="card-role-title" style="font-size:1.4rem; margin-top:8px;">MYSKILL CERTIFIED SERIES</h3>
+        <div class="card-company-loc">
+          <span class="company-name">MySkill Academy // Terbit Oktober 2026</span>
+        </div>
+        <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+          <div
+            style="padding:6px 10px; background:var(--dark-panel); border:1px solid var(--border-dim); font-family:'JetBrains Mono', monospace; font-size:0.8rem;">
+            <strong>[CERT-01]</strong> Vue Introduction
+          </div>
+          <div
+            style="padding:6px 10px; background:var(--dark-panel); border:1px solid var(--border-dim); font-family:'JetBrains Mono', monospace; font-size:0.8rem;">
+            <strong>[CERT-02]</strong> Basic Formula in Microsoft Excel
+          </div>
+          <div
+            style="padding:6px 10px; background:var(--dark-panel); border:1px solid var(--border-dim); font-family:'JetBrains Mono', monospace; font-size:0.8rem;">
+            <strong>[CERT-03]</strong> Worksheet and Workbook in Microsoft Excel
+          </div>
+          <div
+            style="padding:6px 10px; background:var(--dark-panel); border:1px solid var(--border-dim); font-family:'JetBrains Mono', monospace; font-size:0.8rem;">
+            <strong>[CERT-04]</strong> Microsoft Excel Features
+          </div>
+          <div
+            style="padding:6px 10px; background:var(--dark-panel); border:1px solid var(--border-dim); font-family:'JetBrains Mono', monospace; font-size:0.8rem;">
+            <strong>[CERT-05]</strong> Exploring Microsoft Excel Home Tab
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="zebra-stripes"></div>
+
+  <!-- ========================================================================
+       SECTION 07 // COMM LINK & CONTACT TERMINAL
+       ======================================================================== -->
+  <section id="contact" class="section-wrapper">
+    <div class="section-header-block">
+      <div class="section-number-tag"><span>[COMMAND 07] // COMM LINK</span></div>
+      <h2 class="section-main-title">SALURAN KOMUNIKASI RESMI</h2>
+      <p class="section-desc">
+        Hubungi Operator Fierza Luthfi Avjadistia untuk kolaborasi penugasan, peluang karir,
+        atau konsultasi implementasi sistem administrasi & data IT.
+      </p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-grid">
+        <!-- Direct Channels -->
+        <div class="comm-channel-list">
+          <!-- Email -->
+          <div class="comm-link-btn">
+            <div>
+              <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase;">EMAIL TERMINAL</div>
+              <strong style="font-size:1rem;">fierzaluthfi.86@gmail.com</strong>
+            </div>
+            <button class="comm-copy-btn copy-trigger" data-copy="fierzaluthfi.86@gmail.com" title="Copy to clipboard">
+              COPY
+            </button>
+          </div>
+
+          <!-- Phone / WhatsApp -->
+          <div class="comm-link-btn">
+            <div>
+              <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase;">PHONE // WHATSAPP DIRECT
+              </div>
+              <strong style="font-size:1rem;">+62 895 3280 47492</strong>
+            </div>
+            <button class="comm-copy-btn copy-trigger" data-copy="+62895328047492" title="Copy to clipboard">
+              COPY
+            </button>
+          </div>
+
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/fierzaluthfi" target="_blank" rel="noopener noreferrer"
+            class="comm-link-btn">
+            <div>
+              <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase;">LINKEDIN PROFILE</div>
+              <strong style="font-size:1rem;">linkedin.com/in/fierzaluthfi</strong>
+            </div>
+            <span style="font-size:1.1rem;">↗</span>
+          </a>
+
+          <!-- Location -->
+          <div class="comm-link-btn">
+            <div>
+              <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase;">BASE OF OPERATIONS</div>
+              <strong style="font-size:1rem;">Garut & Bandung, Jawa Barat, ID</strong>
+            </div>
+            <span>[STATION]</span>
+          </div>
+        </div>
+
+        <!-- Terminal Status Window -->
+        <div
+          style="display:flex; flex-direction:column; justify-content:space-between; background:var(--dark-panel); border:1px solid var(--border-mid); padding:24px;">
+          <div>
+            <div
+              style="font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--pure-white); border-bottom:1px solid var(--border-dim); padding-bottom:8px; margin-bottom:14px;">
+              [AION_COMM_DISPATCH // READY_STATE]
+            </div>
+            <p
+              style="font-family:'Space Grotesk', sans-serif; font-size:0.95rem; line-height:1.7; color:var(--off-white);">
+              Terbuka untuk posisi <strong>Tata Usaha, Data Administrator, IT Support Specialist, Procurement & Asset
+                Management</strong>,
+              serta perancangan sistem informasi operasional terpadu. Siap memberikan dedikasi penuh dan akurasi
+              terukur.
+            </p>
+          </div>
+
+          <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
+            <a href="mailto:fierzaluthfi.86@gmail.com?subject=Inquiry%20from%20Portfolio"
+              class="btn-tactical btn-tactical-primary" style="width:100%; text-align:center;">
+              <span>KIRIM PESAN LANGSUNG VIA EMAIL</span>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=62895328047492&text=Halo%20Fierza,%20saya%20tertarik%20dengan%20profil%20portfolio%20Anda."
+              target="_blank" rel="noopener noreferrer" class="btn-tactical btn-tactical-outline"
+              style="width:100%; text-align:center;">
+              <span>HUBUNGI VIA WHATSAPP</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer>
+    <div class="footer-quote">
+      MEMENTO MORI. EXCELLENCE IN EVERY RECORD.
+    </div>
+    <div class="footer-sub">
+      &copy; 2026 FIERZA LUTHFI AVJADISTIA // PORTFOLIO SYSTEM POWERED BY PERSONA 3 RELOAD x SOUL HACKERS 2 UI ENGINE
+    </div>
+    <div style="margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:0.7rem; color:var(--text-muted);">
+      [PRESS 1-7 ON KEYBOARD TO NAVIGATE COMMANDS]
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FLOATING TACTICAL COMMAND DOCK (P3R WHEEL / SH2 COMP NAV)
+       ======================================================================== -->
+  <nav class="tactical-nav" aria-label="Tactical Command Dock">
+    <a href="#dossier" class="nav-item active">
+      <span class="nav-num">[01]</span>
+      <span>DOSSIER</span>
+    </a>
+    <a href="#experience" class="nav-item">
+      <span class="nav-num">[02]</span>
+      <span>MISSIONS</span>
+    </a>
+    <a href="#skills" class="nav-item">
+      <span class="nav-num">[03]</span>
+      <span>MATRIX</span>
+    </a>
+    <a href="#education" class="nav-item">
+      <span class="nav-num">[04]</span>
+      <span>ACADEMIA</span>
+    </a>
+    <a href="#organization" class="nav-item">
+      <span class="nav-num">[05]</span>
+      <span>SYNDICATE</span>
+    </a>
+    <a href="#certifications" class="nav-item">
+      <span class="nav-num">[06]</span>
+      <span>LICENSES</span>
+    </a>
+    <a href="#contact" class="nav-item">
+      <span class="nav-num">[07]</span>
+      <span>COMM LINK</span>
+    </a>
+  </nav>
+
+  <!-- Interactive JavaScript Engine -->
+  <script src="script.js"></script>
 </body>
+
 </html>
